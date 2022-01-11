@@ -41,11 +41,47 @@ There is no long press feature.
 ```
 
 
+Color wheel
+--------
+**args0** and **args1** are being sent depending on the position of the color wheel.
+
+| Button | Description | args0 | args1 |
+| :---: | --- | --- | --- |
+| ![button_color_temp_warm](/assets/button_color_temp_warm.png)  | color | 24420 | 38570 |
+
+```json
+{
+    "event_type": "zha_event",
+    "data": {
+        "device_ieee": "00:11:22:33:44:55:66:77",
+        "unique_id": "00:11:22:33:44:55:66:77:1:0x0005",
+        "device_id": "randomdeviceid",
+        "endpoint_id": 1,
+        "cluster_id": 768,
+        "command": "move_to_color",
+        "args": [
+            args0,
+            args1,
+            0
+        ]
+    },
+    "origin": "LOCAL",
+    "time_fired": "yyyy-mm-ddThh:mm:ss.millies+00:00",
+    "context": {
+        "id": "f720b665bcb7deb7f587dffbf3012dd2",
+        "parent_id": null,
+        "user_id": null
+    }
+}
+```
+
+
 Color temperature
 --------
 Short press on the color temperature buttons cycles through values defined in table.  
 Long press on the color temperature buttons cycles through values defined in table, while keeping it pressed.  
 For each value **args0**, a single event is sent.  
+*The first value* was set in preparation by the opposite button, but actually no event is sent for the *first value*.  
 Once the last value is reached, it is contant and **no** new event is sent.  
 
 | Press type | Button | Description | args0 |
